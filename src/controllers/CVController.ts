@@ -1,5 +1,5 @@
 import type { Request, Response } from "express";
-import puppeteer from "puppeteer-core";
+import puppeteer from "puppeteer";
 import { createCVHTML } from "../templates/CVTemplate.js";
 import { Header, CV } from "../models/allmodels.js";
 
@@ -251,16 +251,11 @@ const generatePDF = async (cv: any, res: Response) => {
     languages: cv.languages,
   });
 
-  const browser = await puppeteer.launch({
+const browser = await puppeteer.launch({
   headless: "new" as any,
-    executablePath: process.env.PUPPETEER_EXECUTABLE_PATH || "/usr/bin/chromium-browser",
-    args: [
-      "--no-sandbox",
-      "--disable-setuid-sandbox",
-      "--disable-dev-shm-usage",
-      "--disable-gpu",
-    ],
-  });
+  args: ["--no-sandbox", "--disable-setuid-sandbox", "--disable-dev-shm-usage"],
+});
+
 
   const page = await browser.newPage();
   await page.setContent(html, { waitUntil: "networkidle0" });
