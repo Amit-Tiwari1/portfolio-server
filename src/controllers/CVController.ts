@@ -252,8 +252,14 @@ const generatePDF = async (cv: any, res: Response) => {
   });
 
   const browser = await puppeteer.launch({
-    headless: true,
-    args: ["--no-sandbox", "--disable-setuid-sandbox"],
+  headless: "new" as any,
+    executablePath: process.env.PUPPETEER_EXECUTABLE_PATH || "/usr/bin/chromium-browser",
+    args: [
+      "--no-sandbox",
+      "--disable-setuid-sandbox",
+      "--disable-dev-shm-usage",
+      "--disable-gpu",
+    ],
   });
 
   const page = await browser.newPage();
