@@ -38,8 +38,9 @@ app.use("/api/profile-summary", profileSummaryRoutes);
 
 
 app.get("/", (req, res) => {
-  res.send("Server working");
+  res.send("Server working 🚀 v2");
 });
+
 app.get("/healthz", (req, res) => {
   res.status(200).send("OK");
 });
