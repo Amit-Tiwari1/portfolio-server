@@ -1,0 +1,33 @@
+{
+  "name": "portfolio-backend",
+  "version": "1.0.0",
+  "description": "This server my portfolio data and workfollow.",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "npx tsc -b && node ./dist/index.js"
+  },
+  "author": "dev-amit",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/bcryptjs": "^2.4.6",
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.3",
+    "@types/jsonwebtoken": "^9.0.10",
+    "@types/multer": "^2.0.0",
+    "@types/node": "^24.6.2",
+    "@types/nodemailer": "^7.0.2",
+    "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "cloudinary": "^2.7.0",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.19.0",
+    "multer": "^2.0.2",
+    "nodemailer": "^7.0.9",
+    "puppeteer": "^24.23.1"
+  }
+}
