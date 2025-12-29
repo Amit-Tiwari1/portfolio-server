@@ -40,6 +40,9 @@ app.use("/api/profile-summary", profileSummaryRoutes);
 app.get("/", (req, res) => {
   res.send("Server working");
 });
+app.get("/healthz", (req, res) => {
+  res.status(200).send("OK");
+});
 
 const PORT = process.env.PORT || 5000;
 
