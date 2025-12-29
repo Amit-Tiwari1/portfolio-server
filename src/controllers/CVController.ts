@@ -1,5 +1,5 @@
 import type { Request, Response } from "express";
-import puppeteer from "puppeteer";
+import puppeteer from "puppeteer-core";
 import { createCVHTML } from "../templates/CVTemplate.js";
 import { Header, CV } from "../models/allmodels.js";
 
