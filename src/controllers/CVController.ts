@@ -1,5 +1,7 @@
 import type { Request, Response } from "express";
-import puppeteer from "puppeteer";
+import puppeteer from "puppeteer-core";
+import chromium from "@sparticuz/chromium";
+
 import { createCVHTML } from "../templates/CVTemplate.js";
 import { Header, CV } from "../models/allmodels.js";
 
@@ -252,8 +254,9 @@ const generatePDF = async (cv: any, res: Response) => {
   });
 
 const browser = await puppeteer.launch({
-  headless: "new" as any,
-  args: ["--no-sandbox", "--disable-setuid-sandbox", "--disable-dev-shm-usage"],
+  args: chromium.args,
+  executablePath: await chromium.executablePath(),
+  headless: true,
 });
 
 
@@ -284,4 +287,6 @@ const browser = await puppeteer.launch({
 
   return res.send(pdfBuffer);
 };
+
+
 

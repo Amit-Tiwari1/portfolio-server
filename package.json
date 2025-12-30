@@ -22,6 +22,7 @@
     "typescript": "^5.9.3"
   },
   "dependencies": {
+    "@sparticuz/chromium": "^143.0.0",
     "cloudinary": "^2.7.0",
     "cors": "^2.8.5",
     "dotenv": "^17.2.3",
@@ -30,6 +31,6 @@
     "mongoose": "^8.19.0",
     "multer": "^2.0.2",
     "nodemailer": "^7.0.9",
-    "puppeteer": "^24.23.1"
+    "puppeteer-core": "^24.34.0"
   }
 }
