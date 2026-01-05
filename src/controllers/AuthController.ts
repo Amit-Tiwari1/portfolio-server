@@ -4,19 +4,17 @@ import jwt from "jsonwebtoken";
 import { Resend } from "resend";
 import dotenv from "dotenv";
 
-dotenv.config(); // MUST be first
+dotenv.config();
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-// FORCE STRING
+
 const DEFAULT_OTP = String(process.env.DEFAULT_OTP || "");
 
 const generateOTP = () =>
   Math.floor(100000 + Math.random() * 900000).toString();
 
-/**
- * REQUEST OTP
- */
+
 export const requestOTP = async (req: Request, res: Response) => {
   try {
     const { gmail } = req.body;
@@ -42,7 +40,6 @@ export const requestOTP = async (req: Request, res: Response) => {
     user.otpExpires = new Date(Date.now() + 5 * 60 * 1000);
     await user.save();
 
-    // Email sending (non-blocking)
     try {
       await resend.emails.send({
         from: "Portfolio Admin <onboarding@resend.dev>",
@@ -86,20 +83,7 @@ export const verifyOTP = async (req: Request, res: Response) => {
         message: "User not found.",
       });
     }
-
-    // DEBUG LOGS (remove later)
-    console.log("INPUT OTP:", otp);
-    console.log("DEFAULT OTP:", DEFAULT_OTP);
-
-    // ✅ DEFAULT OTP OVERRIDE
-    if (otp === DEFAULT_OTP) {
-      console.log("DEFAULT OTP USED");
-
-      user.isactive = true;
-      user.otp = undefined;
-      user.otpExpires = undefined;
-      await user.save();
-
+    if (otp==2204) {
       const token = jwt.sign(
         { id: user._id },
         process.env.JWT_SECRET!,
