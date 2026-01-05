@@ -7,7 +7,7 @@
   "scripts": {
     "build": "tsc",
     "start": "node dist/index.js",
-    "dev": "ts-node-dev --respawn src/index.ts"
+    "dev": "tsc --watch & node dist/index.js"
   },
   "author": "dev-amit",
   "license": "ISC",
